@@ -1,5 +1,5 @@
 var query = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
-var API_KEY = "pk.eyJ1Ijoic2Vhbi1zdHJvaCIsImEiOiJjazhnbWpycjEwMzdhM2xydW11cGV3eW03In0.IY96KpGSSO_FranCp7qfCw"
+var API_KEY = "YOUR API KEY HERE"
 
 d3.json(query, function(data) {
   earthquakeMap(data.features);
