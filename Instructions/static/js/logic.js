@@ -82,63 +82,27 @@ function createMap(earthquakes) {
                     '#38a52e';
   }
 
-// info.addTo(map);
-
-// Initialize an object containing icons for each layer group
-// var magnitudes = {
-//   0-1: L.ExtraMarkers.icon({
-//     icon: "ion-settings",
-//     iconColor: "white",
-//     markerColor: "yellow",
-//     shape: "star"
-//   }),
-//   EMPTY: L.ExtraMarkers.icon({
-//     icon: "ion-android-bicycle",
-//     iconColor: "white",
-//     markerColor: "red",
-//     shape: "circle"
-//   }),
-//   OUT_OF_ORDER: L.ExtraMarkers.icon({
-//     icon: "ion-minus-circled",
-//     iconColor: "white",
-//     markerColor: "blue-dark",
-//     shape: "penta"
-//   }),
-//   LOW: L.ExtraMarkers.icon({
-//     icon: "ion-android-bicycle",
-//     iconColor: "white",
-//     markerColor: "orange",
-//     shape: "circle"
-//   }),
-//   NORMAL: L.ExtraMarkers.icon({
-//     icon: "ion-android-bicycle",
-//     iconColor: "white",
-//     markerColor: "green",
-//     shape: "circle"
-//   })
-// };
-
-
-// ###################################################################
-// retrieved from ("https://leafletjs.com/examples/choropleth/")
-
 var legend = L.control({position: 'bottomright'});
-  
-  legend.onAdd = function (map) {
-  
-      var div = L.DomUtil.create('div', 'info legend'),
-          magnitudes = [0, 1, 2, 3, 4, 5],
-          color = ['#38a52e', '#ffbf00', '#ff4dd2', '#86c5da', '#000080','#980cff']
-          labels = [];
-          
-      for (var i = 0; i < magnitudes.length; i++) {
-          div.innerHTML +=
-              '<i style="background:' + addColor + '"></i> ' +
-              magnitudes[i] + (magnitudes[i + 1] ? '&ndash;' + magnitudes[i + 1] + '<br>' : '+');
-      }
-  
-      return div;
-  };
-  
-  legend.addTo(myMap);
+
+legend.onAdd = function() {
+  var div = L
+    .DomUtil
+    .create("div", "info legend");
+  var grades = [0, 1, 2, 3, 4, 5];
+  var colors = [
+    "#38a52e",
+    "#ffbf00",
+    "#ff4dd2",
+    "#86c5da",
+    "#000080",
+    "#980cff"
+  ];
+  // Loop through our intervals and generate a label with a colored square for each interval.
+  for (var i = 0; i < grades.length; i++) {
+    div.innerHTML += "<i style='background: " + colors[i] + "'></i> " +
+      grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
+  }
+  return div;
+}
+legend.addTo(myMap);
 };
